@@ -23,7 +23,8 @@ Route::get('/', function () {
 Route::get('/posts/{slug}', function ($slug) {
     $post = Sheets::collection('posts')->all()->where('slug',$slug)->first();
     abort_if(is_null($post),404);
-
     return view('posts.show',[
         'post' => $post]);
 });
+//this is looking for the test route and will as a result show the app
+Route::view('/test','app');

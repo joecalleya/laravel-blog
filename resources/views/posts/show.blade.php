@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=hi">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Post {{$post->title}}</h1>
-    <div> posted {{$post->date->diffForHumans()}} by  {{$post->author}}</div>
-    <div> {{$post->contents}}</div>
+@extends('app-layout')
+@section('content')
+    <div class="mt-10 space-y-5 prose max-w-none ">
+        <h1 class="not-prose">Post {{$post->title}}</h1>
+        <div class="text-sm"> posted {{$post->date->diffForHumans()}} by  {{$post->author}}</div>
+        <div class=""> {{$post->contents}}</div>
+    </div>
 
-</body>
-</html>
+@endsection

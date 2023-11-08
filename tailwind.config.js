@@ -1,10 +1,20 @@
+
+import defaultTheme from 'tailwindcss/defaultTheme';
+
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: [    "./resources/**/*.blade.php",
 ],
   theme: {
-    extend: {},
+    extend: {
+        fontFamily : {
+            sans : ["Figtree",...defaultTheme.fontFamily.sans]
+        }
+    },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
 
