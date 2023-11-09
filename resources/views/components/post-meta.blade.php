@@ -1,0 +1,1 @@
+<div class="text-sm"> posted {{$post->date->diffForHumans()}} by <a class="hover:text-indigo-700 transition-colors duration-100" href="/authors/{{$post->author}}">{{$post->author_name}}</a></h2></div>

@@ -1,7 +1,7 @@
 <?php
-
-use Illuminate\Support\Facades\Route;
+use App\Models\Post;
 use Spatie\Sheets\Facades\Sheets;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +17,29 @@ use Spatie\Sheets\Facades\Sheets;
 Route::get('/', function () {
     $posts = Sheets::collection('posts')->all();
     return view('posts.index',[
-        'posts' => $posts]);
+        'posts' => $posts
+        ]);
     });
 
 Route::get('/posts/{slug}', function ($slug) {
     $post = Sheets::collection('posts')->all()->where('slug',$slug)->first();
     abort_if(is_null($post),404);
+
     return view('posts.show',[
-        'post' => $post]);
+        'post' => $post
+    ]);
 });
 //this is looking for the test route and will as a result show the app
-Route::view('/test','app');
+// filter authors from the url
+//'then add this into the code
+
+Route::get('/authors/{author}', function ($author) {
+    $posts = Sheets::collection('posts')
+            ->all()
+            ->filter(fn (Post $post) => $post->author == $author);
+
+    return view('authors.show',[
+            'posts' => $posts,
+            'authorName' =>  $posts->first()->author_name
+        ]);
+});

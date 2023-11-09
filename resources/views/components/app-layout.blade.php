@@ -17,8 +17,9 @@
         <h1 class="text-xl font-bold">
             My Personal Blog
         </h1>
-        @yield('content')
-
+            {{-- we can inject code using yeild or slot  --}}
+            {{-- @yield('content') --}}
+            {{$slot}}
     </div>
 </body>
 </html>
