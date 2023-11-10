@@ -15,11 +15,11 @@
 <body >
     <div class="container py-10 mx-auto">
         <h1 class="text-xl font-bold">
-            My Personal Blog
+            <a href="/">{{ config('app.name')}}</a>
         </h1>
-            {{-- we can inject code using yeild or slot  --}}
-            {{-- @yield('content') --}}
-            {{$slot}}
+        {{-- we can inject code using yeild or slot  --}}
+        {{-- @yield('content') --}}
+        {{$slot}}
     </div>
 </body>
 </html>

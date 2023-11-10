@@ -29,7 +29,7 @@ Route::get('/posts/{slug}', function ($slug) {
         'post' => $post
     ]);
 });
-//this is looking for the test route and will as a result show the app
+//this is looking for the authors route and will as a result show the app
 // filter authors from the url
 //'then add this into the code
 
@@ -41,5 +41,19 @@ Route::get('/authors/{author}', function ($author) {
     return view('authors.show',[
             'posts' => $posts,
             'authorName' =>  $posts->first()->author_name
+        ]);
+});
+//this is looking for the tags route and will as a result show the app
+// filter authors from the url
+//'then add this into the code
+
+Route::get('/tags/{tag}', function ($tag) {
+    $posts = Sheets::collection('posts')
+            ->all()
+            ->filter(fn (Post $post) => in_array($tag, $post->tags));
+
+    return view('tags.show',[
+            'posts' => $posts,
+            'tag' => $tag
         ]);
 });
